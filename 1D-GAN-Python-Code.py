@@ -98,3 +98,10 @@ def generate_fake_samples(generator, latent_dim, n):
 	# plot the results
 	pyplot.scatter(X[:, 0], X[:, 1])
 	pyplot.show()
+	
+    # size of the latent space
+latent_dim = 5
+# define the discriminator model
+model = define_generator(latent_dim)
+# generate and plot generated samples
+generate_fake_samples(model, latent_dim, 100)
