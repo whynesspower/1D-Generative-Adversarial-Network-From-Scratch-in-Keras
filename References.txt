@@ -1,0 +1,3 @@
+Some interesting resources to learn more about GAN-
+
+https://octoml.ai/blog/from-gans-to-stable-diffusion-the-history-hype-and-promise-of-generative-ai/
