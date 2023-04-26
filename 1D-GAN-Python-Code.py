@@ -120,3 +120,17 @@ def define_gan(generator, discriminator):
 	# compile model
 	model.compile(loss='binary_crossentropy', optimizer='adam')
 	return model
+
+
+
+latent_dim = 5
+# create the discriminator
+discriminator = define_discriminator()
+# create the generator
+generator = define_generator(latent_dim)
+# create the gan
+gan_model = define_gan(generator, discriminator)
+# summarize gan model
+gan_model.summary()
+# plot gan model
+plot_model(gan_model, to_file='gan_plot.png', show_shapes=True, show_layer_names=True)
