@@ -191,3 +191,13 @@ def generate_latent_points(latent_dim, n):
 	# reshape into a batch of inputs for the network
 	x_input = x_input.reshape(n, latent_dim)
 	return x_input
+
+# use the generator to generate n fake examples, with class labels
+def generate_fake_samples(generator, latent_dim, n):
+	# generate points in latent space
+	x_input = generate_latent_points(latent_dim, n)
+	# predict outputs
+	X = generator.predict(x_input)
+	# create class labels
+	y = zeros((n, 1))
+	return X, y
