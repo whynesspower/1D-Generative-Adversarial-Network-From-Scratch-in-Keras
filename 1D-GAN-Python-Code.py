@@ -105,3 +105,18 @@ latent_dim = 5
 model = define_generator(latent_dim)
 # generate and plot generated samples
 generate_fake_samples(model, latent_dim, 100)
+
+
+# define the combined generator and discriminator model, for updating the generator
+def define_gan(generator, discriminator):
+	# make weights in the discriminator not trainable
+	discriminator.trainable = False
+	# connect them
+	model = Sequential()
+	# add generator
+	model.add(generator)
+	# add the discriminator
+	model.add(discriminator)
+	# compile model
+	model.compile(loss='binary_crossentropy', optimizer='adam')
+	return model
