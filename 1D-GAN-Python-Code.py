@@ -74,3 +74,26 @@ def generate_fake_samples(n):
 	# generate class labels
 	y = zeros((n, 1))
 	return X, y
+
+# train the discriminator model
+def train_discriminator(model, n_epochs=1000, n_batch=128):
+	half_batch = int(n_batch / 2)
+	# run epochs manually
+	for i in range(n_epochs):
+		# generate real examples
+		X_real, y_real = generate_real_samples(half_batch)
+		# update model
+		model.train_on_batch(X_real, y_real)
+		# generate fake examples
+		X_fake, y_fake = generate_fake_samples(half_batch)
+		# update model
+		model.train_on_batch(X_fake, y_fake)
+		# evaluate the model
+		_, acc_real = model.evaluate(X_real, y_real, verbose=0)
+		_, acc_fake = model.evaluate(X_fake, y_fake, verbose=0)
+		print(i, acc_real, acc_fake)
+
+# define the discriminator model
+model = define_discriminator()
+# fit the model
+train_discriminator(model)
