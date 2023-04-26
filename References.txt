@@ -6,3 +6,5 @@ https://www.youtube.com/@statquest/videos
 
 https://www.youtube.com/watch?v=TpMIssRdhco&pp=ygUTZ2FuIG1hY2hpbmUgbGVhbmluZw%3D%3D
 
+https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/#fromHistory
+
