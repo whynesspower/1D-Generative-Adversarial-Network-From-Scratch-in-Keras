@@ -5,7 +5,11 @@ GAN or Generative Adversarial Network are a type of Deep Learning architecture f
 Its is a backbone to almost every genrative model out there may it be OpenAI's DALL-E 2, Google Brain's Imagen, Midjourney or Stable Diffusion. Yann Lecun, Chief AI Scientist at Meta, said it was “the most interesting idea in the last 10 years in machine learning”
 A one dimentinal simple implementation of GAN using TensorFlow's library Keras
 
-A very simple project based on GAN, Sequential model from Keras. We will have one node for input, 25 nodes in hidden layer and one output layer.
+GAN is composed of a generator model and a descriminator model competing with each other. Hence the name 'adversarial'. 
+
+This project is based on GAN, Sequential model from Keras. We will have one node for input, 25 nodes in hidden layer and one output layer for our discriminator model. 
+
+*Checkout resouces section for more details and some references to learn more about GANs models*
 
 ### Dependancies
 
