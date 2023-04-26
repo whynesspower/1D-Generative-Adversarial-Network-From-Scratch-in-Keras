@@ -66,3 +66,10 @@ def train_discriminator(model, n_epochs=1000, n_batch=128):
 model = define_discriminator()
 # fit the model
 train_discriminator(model)
+
+# define the standalone generator model
+def define_generator(latent_dim, n_outputs=2):
+	model = Sequential()
+	model.add(Dense(15, activation='relu', kernel_initializer='he_uniform', input_dim=latent_dim))
+	model.add(Dense(n_outputs, activation='linear'))
+	return model
