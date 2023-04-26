@@ -28,3 +28,10 @@ We are doing total of 10,000 epochs and plotting a progress graph every 2,000 ep
 
 
 ![image](https://user-images.githubusercontent.com/77494053/234606488-0977be36-8151-4b25-82a4-5bc003ec877c.png)
+
+
+
+## My Learnings- 
+1. How to develop separate discriminator and generator models, as well as a composite model for training the generator via the discriminator’s predictive behavior.
+
+2. How to subjectively evaluate generated samples in the context of real examples from the problem domain.
