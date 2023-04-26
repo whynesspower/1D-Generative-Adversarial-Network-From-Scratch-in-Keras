@@ -201,3 +201,20 @@ def generate_fake_samples(generator, latent_dim, n):
 	# create class labels
 	y = zeros((n, 1))
 	return X, y
+
+# evaluate the discriminator and plot real and fake points
+def summarize_performance(epoch, generator, discriminator, latent_dim, n=100):
+	# prepare real samples
+	x_real, y_real = generate_real_samples(n)
+	# evaluate discriminator on real examples
+	_, acc_real = discriminator.evaluate(x_real, y_real, verbose=0)
+	# prepare fake examples
+	x_fake, y_fake = generate_fake_samples(generator, latent_dim, n)
+	# evaluate discriminator on fake examples
+	_, acc_fake = discriminator.evaluate(x_fake, y_fake, verbose=0)
+	# summarize discriminator performance
+	print(epoch, acc_real, acc_fake)
+	# scatter plot real and fake data points
+	pyplot.scatter(x_real[:, 0], x_real[:, 1], color='red')
+	pyplot.scatter(x_fake[:, 0], x_fake[:, 1], color='blue')
+	pyplot.show()
