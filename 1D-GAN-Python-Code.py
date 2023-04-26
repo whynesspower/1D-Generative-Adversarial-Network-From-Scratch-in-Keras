@@ -6,7 +6,7 @@ from numpy.random import rand
 from numpy.random import randn
 from keras.models import Sequential
 from keras.layers import Dense
-
+from pydot import plot_model
 # define the standalone discriminator model
 def define_discriminator(n_inputs=2):
 	model = Sequential()
@@ -73,3 +73,28 @@ def define_generator(latent_dim, n_outputs=2):
 	model.add(Dense(15, activation='relu', kernel_initializer='he_uniform', input_dim=latent_dim))
 	model.add(Dense(n_outputs, activation='linear'))
 	return model
+
+# define the discriminator model
+model = define_generator(5)
+# summarize the model
+model.summary()
+# plot the model
+plot_model(model, to_file='generator_plot.png', show_shapes=True, show_layer_names=True)
+
+
+# generate points in latent space as input for the generator
+def generate_latent_points(latent_dim, n):
+	# generate points in the latent space
+	x_input = randn(latent_dim * n)
+	# reshape into a batch of inputs for the network
+	x_input = x_input.reshape(n, latent_dim)
+	return x_input
+# use the generator to generate n fake examples and plot the results
+def generate_fake_samples(generator, latent_dim, n):
+	# generate points in latent space
+	x_input = generate_latent_points(latent_dim, n)
+	# predict outputs
+	X = generator.predict(x_input)
+	# plot the results
+	pyplot.scatter(X[:, 0], X[:, 1])
+	pyplot.show()
